@@ -5,4 +5,9 @@ const productsRouter = require('./product.routes');
 router.use ('/animals', animalsRouter);
 router.use('/products', productsRouter);
 
+
+
+const models = {};
+
+
 module.exports = router;
