@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     });
   });
 
-router.get('/:id', (req, res) => {
+router.get('/api/animals/:id', (req, res) => {
 const animalId = req.params.id;
 connection.query(
     'SELECT * FROM animal WHERE id = ?',
@@ -27,7 +27,7 @@ connection.query(
 );
 }); 
 
-router.post('/', (req, res) => {
+router.post('/api/animals', (req, res) => {
   const { name, species, age, description, picture } = req.body;
   connection.query(
     'INSERT INTO animal (name, species, age, description, picture) VALUES (?, ?, ?, ?, ?)',
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
   );
 });
 
-router.put('/:id', (req, res) => {
+router.put('/api/animals/:id', (req, res) => {
   const animalId = req.params.id;
   const db = connection.promise();
   let existingAnimal = null;
@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/api/animals/:id', (req, res) => {
   connection.query(
     'DELETE FROM animal WHERE id = ?',
     [req.params.id],
